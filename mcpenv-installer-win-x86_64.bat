@@ -31,7 +31,7 @@ goto :main
     echo *****安装完成！请记录以下内容，用于mcp-server配置*****
     :: 输出python环境路径
     echo Python 环境路径: %CONDA_BASE%\envs\mcp-server-py310\python.exe
-    echo mcp-server的执行命令为：%CONDA_BASE%\envs\mcp-server-py310\python.exe  %CONDA_BASE%\envs\mcp-server-py310\lib\site-packages\spinqit_simplified\qasm_submitter.py
+    echo mcp-server的执行命令为：%CONDA_BASE%\envs\mcp-server-py310\python.exe  %CONDA_BASE%\envs\mcp-server-py310\lib\site-packages\spinqit_task_manager\qasm_submitter.py
     pause
     exit /b 1
     goto :eof
@@ -95,7 +95,7 @@ if %MAJOR% equ 3 (
     for /f "delims=" %%a in ('where python') do (
         echo Python 环境路径: "%%a"
         set "parent_dir=%%~dpa"
-        set "new_path=!parent_dir!lib\site-packages\spinqit_simplified\qasm_submitter.py"  &:: 直接拼接
+        set "new_path=!parent_dir!lib\site-packages\spinqit_task_manager\qasm_submitter.py"  &:: 直接拼接
         echo mcp-server的执行命令为："%%a"  "!new_path!"
         pause
         exit /b 1

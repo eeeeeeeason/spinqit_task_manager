@@ -4,16 +4,16 @@ import os
 import requests
 import logging
 from mcp.server.fastmcp import FastMCP
-from spinqit_simplified import cloud_mcp_submit
-from spinqit_simplified.compiler import get_compiler
-from spinqit_simplified.backend import get_spinq_cloud
-from spinqit_simplified.backend.client.spinq_cloud_client import SpinQCloudClient
+from spinqit_task_manager import cloud_mcp_submit
+from spinqit_task_manager.compiler import get_compiler
+from spinqit_task_manager.backend import get_spinq_cloud
+from spinqit_task_manager.backend.client.spinq_cloud_client import SpinQCloudClient
 from Crypto.Hash import SHA256
 from Crypto.Signature import PKCS1_v1_5 as Signature_pkcs1_v1_5
 from Crypto.PublicKey import RSA
-from spinqit_simplified.model.spinqCloud.task import Task
+from spinqit_task_manager.model.spinqCloud.task import Task
 from flask import Flask, request, jsonify
-from spinqit_simplified.model.spinqCloud.circuit import graph_to_circuit, convert_cz
+from spinqit_task_manager.model.spinqCloud.circuit import graph_to_circuit, convert_cz
 
 import base64
 

@@ -45,7 +45,7 @@
 2. **运行脚本**
    - 执行脚本：
      ```bash
-     ./mcpenv-installer-mac.sh
+     sudo bash ./mcpenv-installer-mac.sh
      ```
 
 3. **脚本行为**
@@ -62,8 +62,8 @@
   - Windows：`C:\path\to\conda\envs\mcp-server-py310\python.exe`
   - macOS：`/path/to/conda/envs/mcp-server-py310/bin/python`
 - **mcp-server 执行命令**：运行 `mcp-server` 的命令，例如：
-  - Windows：`C:\path\to\python.exe C:\path\to\spinqit_simplified\qasm_submitter.py`
-  - macOS：`/path/to/python /path/to/spinqit_simplified/qasm_submitter.py`
+  - Windows：`C:\path\to\conda\envs\mcp-server-py310\python.exe -m spinqit_task_manager.qasm_submitter`
+  - macOS：`/path/to/conda/envs/mcp-server-py310/bin/python -m spinqit_task_manager.qasm_submitter`
 
 请保存这些信息，用于配置和运行 `spinqit-mcp-server`。
 
@@ -81,21 +81,10 @@
 
 
 ### 使用
-- 环境复杂就看python安装在哪个目录如：
-  - 我的conda在/opt/anaconda3/envs/testmcpenv/bin/python
-  - 于是可以直接执行/opt/anaconda3/envs/testmcpenv/bin/qasm-submitter
+- 环境复杂就看python安装在哪个目录：
+  - /pathtopython/python -m spinqit_task_manager.qasm_submitter
 
-### 环境测试情况 （创建并提交一个2比特量子线路qasm到云平台，可能的话查看结果）
-- mac python 3.10.16 cherry-studio
-  - 配置项：
-    - 命令： /opt/anaconda3/envs/testmcpenv/bin/qasm-submitter
-    - 环境变量：
-      - PYTHONPATH=/opt/anaconda3/envs/testmcpenv/bin/python
-      - PRIVATEKEYPATH=/Users/yucheng/.ssh/id_rsa
-      - SPINQCLOUDUSERNAME=a492760446
-    - ![alt text](image-1.png)
-  - 结果
-    - ![alt text](image.png)
+### 环境测试情况 （创建并提交一个2比特量子线路qasm到云平台，并查看结果）
 
 - vscode cline插件
   - 配置项：
@@ -103,12 +92,19 @@
     {
       "mcpServers": {
         "qasm-submitter": {
-          "type": "stdio",
-          "command": "/opt/anaconda3/envs/testmcpenv/bin/qasm-submitter",
+          "disabled": false,
+          "timeout": 60,
+          "transportType": "stdio",
+          "command": "cmd",
+          "args": [
+            "/C",
+            "C:\\Users\\ylin\\.conda\\envs\\mcp-server-py310\\python.exe",
+            "-m",
+            "spinqit_task_manager.qasm_submitter"
+          ],
           "env": {
-            "PYTHONPATH":"/opt/anaconda3/envs/testmcpenv/bin/python",
-            "PRIVATEKEYPATH":"/Users/yucheng/.ssh/id_rsa",
-            "SPINQCLOUDUSERNAME":"a492760446"
+            "PRIVATEKEYPATH": "C:\\Users\\ylin\\.ssh\\id_rsa",
+            "SPINQCLOUDUSERNAME": "a492760446"
           }
         }
       }
@@ -126,7 +122,13 @@
       "mcpServers": {
         "qasm-submitter": {
           "type": "stdio",
-          "command": "/opt/anaconda3/envs/testmcpenv/bin/qasm-submitter",
+          "command": "cmd",
+          "args": [
+            "/C",
+            "C:\\Users\\ylin\\.conda\\envs\\mcp-server-py310\\python.exe",
+            "-m",
+            "spinqit_task_manager.qasm_submitter"
+          ],
           "env": {
             "PYTHONPATH":"/opt/anaconda3/envs/testmcpenv/bin/python",
             "PRIVATEKEYPATH":"/Users/yucheng/.ssh/id_rsa",
