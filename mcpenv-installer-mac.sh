@@ -26,7 +26,8 @@ create_and_activate_conda_env() {
     echo "环境安装成功，您的环境配置如下，可用于粘贴到所需的 mcp-client..."
     # 输出 python 环境路径和执行命令
     echo "Python 环境路径: ${CONDA_BASE}/envs/mcp-server-py310/bin/python"
-    echo "mcp-server 的执行命令为：${CONDA_BASE}/envs/mcp-server-py310/bin/python ${CONDA_BASE}/envs/mcp-server-py310/lib/python3.10/site-packages/spinqit_task_manager/qasm_submitter.py"
+    echo "mcp-server 的执行命令为：${CONDA_BASE}/envs/mcp-server-py310/bin/python -m spinqit_task_manager.qasm_submitter"
+    echo "用户名与私钥信息请访问cloud.spinq.cn进行获取，并设置到mcp-server的配置文件中"
     read -p "按 Enter 继续..."
     exit 0
 }
@@ -58,7 +59,8 @@ main() {
         PYTHON_PATH=$(which python3)
         SITE_PACKAGES=$(python3 -c "import site; print(site.getsitepackages()[0])")
         echo "Python 环境路径: $PYTHON_PATH"
-        echo "mcp-server 的执行命令为：$PYTHON_PATH $SITE_PACKAGES/spinqit_task_manager/qasm_submitter.py"
+        echo "mcp-server 的执行命令为：$PYTHON_PATH -m spinqit_task_manager.qasm_submitter"
+        echo "用户名与私钥信息请访问cloud.spinq.cn进行获取，并设置到mcp-server的配置文件中"
         read -p "按 Enter 继续..."
         exit 0
     else

@@ -27,11 +27,12 @@ goto :main
     echo 创建完成！
     :: 由于有的cmd没初始化需要使用绝对路径activate
     call %CONDA_BASE%\Scripts\activate.bat mcp-server-py310
-    pip install spinqit_task_manager
+    pip install --no-cache-dir --upgrade spinqit_task_manager
     echo *****安装完成！请记录以下内容，用于mcp-server配置*****
     :: 输出python环境路径
     echo Python 环境路径: %CONDA_BASE%\envs\mcp-server-py310\python.exe
-    echo mcp-server的执行命令为：%CONDA_BASE%\envs\mcp-server-py310\python.exe  %CONDA_BASE%\envs\mcp-server-py310\lib\site-packages\spinqit_task_manager\qasm_submitter.py
+    echo mcp-server的执行命令为：%CONDA_BASE%\envs\mcp-server-py310\python.exe -m spinqit_task_manager.qasm_submitter
+    echo "用户名与私钥信息请访问cloud.spinq.cn进行获取，并设置到mcp-server的配置文件中"
     pause
     exit /b 1
     goto :eof
@@ -39,6 +40,8 @@ goto :main
 
 :main
 @echo off
+chcp 65001
+
 for /f "tokens=2 delims= " %%v in ('python --version') do set PY_VER=%%v
 for /f "tokens=1,2 delims=." %%a in ("%PY_VER%") do (
     set MAJOR=%%a
@@ -58,6 +61,7 @@ set "conda_output="
 set "python_path_output="
 if %MAJOR% equ 3 (
   if %MINOR% lss 10 (
+    echo 当前python版本小于3.10，正在检查conda...
     :: 捕获所有输出（包括 stderr）
     for /f "delims=" %%a in ('conda --version 2^>^&1') do (
       if "!conda_output!"=="" (
@@ -84,7 +88,7 @@ if %MAJOR% equ 3 (
     echo "python >= 3.10"
     echo Python 版本符合要求，继续安装...
     :: 执行安装脚本pip install spinqit_task_manager
-    python -m pip install spinqit_task_manager
+    python -m pip install --no-cache-dir --upgrade spinqit_task_manager
     if %errorlevel% neq 0 (
         echo 安装 spinqit_task_manager 失败，请检查网络或pip配置。
         pause
@@ -95,8 +99,8 @@ if %MAJOR% equ 3 (
     for /f "delims=" %%a in ('where python') do (
         echo Python 环境路径: "%%a"
         set "parent_dir=%%~dpa"
-        set "new_path=!parent_dir!lib\site-packages\spinqit_task_manager\qasm_submitter.py"  &:: 直接拼接
-        echo mcp-server的执行命令为："%%a"  "!new_path!"
+        echo mcp-server的执行命令为："%%a" -m spinqit_task_manager.qasm_submitter
+        echo "用户名与私钥信息请访问cloud.spinq.cn进行获取，并设置到mcp-server的配置文件中"
         pause
         exit /b 1
     )
@@ -104,6 +108,8 @@ if %MAJOR% equ 3 (
   )
 ) else (
   echo python < 3
+  echo 当前python版本小于3.10，正在检查conda...
+
   :: 2. 如果没有，判断用户是否存在conda，有conda 就用conda创建python 3.10的环境，并安装包
   :: 捕获所有输出（包括 stderr）
   for /f "delims=" %%a in ('conda --version 2^>^&1') do (

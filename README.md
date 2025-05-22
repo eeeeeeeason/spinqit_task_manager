@@ -25,7 +25,7 @@
 
 1. **下载脚本**
    - 从以下链接下载 `mcpenv-installer-win-x86_64.bat` 脚本：
-     <a href="https://static-cdn.spinq.cn/mcp_server_cmd/mcpenv-installer-win-x86_64.bat">下载 Windows 安装脚本</a>
+     <a href="https://static-cdn.spinq.cn/mcp_server_cmd/download_cmd.html?win">下载 Windows 安装脚本</a>
 
 2. **运行脚本**
    - 双击mcpenv-installer-win-x86_64.bat，运行安装
@@ -35,11 +35,15 @@
    - **如果没有 Python 3.10 但已安装 Conda**：脚本会创建一个名为 `mcp-server-py310` 的 Conda 环境（使用 Python 3.10），安装依赖包，并输出环境路径和执行命令。
    - **如果既没有 Python 3.10 也没有 Conda**：脚本会提示您从 [Python 官网](https://www.python.org/downloads/) 或 [Anaconda 官网](https://www.anaconda.com/download) 下载并安装 Python 3.10 或 Conda，安装后再重新运行脚本。
 
+4. **安装成功**
+    - ![alt text](image-6.png)
+    - 记录执行的命令（如我这里的C:\ProgramData\Anaconda3\envs\mcp-server-py310\python.exe -m spinqit_task_manager.qasm_submitter），并且到cloud.spinq.cn注册账号配置您的公钥
+
 ### macOS
 
 1. **下载脚本**
    - 从以下链接下载 `mcpenv-installer-mac.sh` 脚本：
-     <a href="https://static-cdn.spinq.cn/mcp_server_cmd/mcpenv-installer-mac.sh">下载 macOS 安装脚本</a>
+     <a href="https://static-cdn.spinq.cn/mcp_server_cmd/download_cmd.html?mac">下载 macOS 安装脚本</a>
 
 
 2. **运行脚本**
@@ -53,6 +57,7 @@
      - 检查是否存在 Python 3.10 或更高版本，如果存在则安装 `spinqit_task_manager`。
      - 如果没有 Python 3.10，检查 Conda 是否存在，并创建一个 `mcp-server-py310` 环境。
      - 如果既没有 Python 3.10 也没有 Conda，提示用户安装 Python 3.10 或 Conda，然后重新运行脚本。
+
 
 
 ## 输出结果
@@ -81,7 +86,7 @@
 
 
 ### 使用
-- 环境复杂就看python安装在哪个目录：
+- 根据python安装目录使用：
   - /pathtopython/python -m spinqit_task_manager.qasm_submitter
 
 ### 环境测试情况 （创建并提交一个2比特量子线路qasm到云平台，并查看结果）
@@ -94,7 +99,7 @@
         "qasm-submitter": {
           "disabled": false,
           "timeout": 60,
-          "transportType": "stdio",
+          "transportType": "stdio", 
           "command": "cmd",
           "args": [
             "/C",

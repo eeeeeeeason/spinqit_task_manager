@@ -8,7 +8,7 @@ def parse_requirements(filename):
 
 setup(
     name="spinqit_task_manager",
-    version="0.1.2",
+    version="0.1.6",
     packages=find_packages(include=['spinqit_task_manager*']),  # 自动发现包
     package_data={
         # 键：包名；值：文件列表（支持通配符）
