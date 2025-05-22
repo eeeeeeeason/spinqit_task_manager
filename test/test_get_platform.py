@@ -73,7 +73,6 @@ def get_self_env():
     return env_dict
 
 # 获取一系列可运行平台的编号,用于提交任务
-@mcp.tool()
 def get_platforms():
     user_name, private_key = get_user_and_key()
     signature = sign_message(user_name, private_key)
@@ -119,6 +118,7 @@ def qasm_submit(qasm_str, task_name, platform_code='simulator') -> json:
     signature = sign_message(user_name, private_key)
     api_client = SpinQCloudClient(user_name, signature)
     api_client.login()
+
     # circuit, qubit_mapping = backend.transpile("gemini_vp", exe)
     qnum = exe.qnum # 对于模拟器来说需要设置比特数与qasm匹配
     p = backend.get_platform(platform_code)
@@ -163,4 +163,10 @@ def run_server():
     
 # 运行服务器
 if __name__ == "__main__":
-    run_server()
+    qasm_str = "OPENQASM 2.0;\ninclude \"qelib1.inc\";\n\nqreg q[3];\n\nh q[0];\ncx q[0], q[1];\ncx q[1], q[2];"
+    task_name = "test_task"
+    platform_code = "triangulum_vp"
+    # 提交任务
+    res = qasm_submit(qasm_str, task_name, platform_code)
+    print("Task submitted:", res)
+    

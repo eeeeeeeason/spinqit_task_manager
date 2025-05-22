@@ -58,8 +58,6 @@
      - 如果没有 Python 3.10，检查 Conda 是否存在，并创建一个 `mcp-server-py310` 环境。
      - 如果既没有 Python 3.10 也没有 Conda，提示用户安装 Python 3.10 或 Conda，然后重新运行脚本。
 
-
-
 ## 输出结果
 
 脚本成功运行后，将输出以下信息：
@@ -90,6 +88,32 @@
   - /pathtopython/python -m spinqit_task_manager.qasm_submitter
 
 ### 环境测试情况 （创建并提交一个2比特量子线路qasm到云平台，并查看结果）
+- cursor
+  - 配置方式
+    - ![alt text](image-7.png)
+  - 结果
+    - ![alt text](image-5.png)
+  - 配置项
+    ```
+    {
+      "mcpServers": {
+        "qasm-submitter": {
+          "type": "stdio",
+          "command": "cmd",
+          "args": [
+            "/C",
+            "C:\\Users\\ylin\\.conda\\envs\\mcp-server-py310\\python.exe",
+            "-m",
+            "spinqit_task_manager.qasm_submitter"
+          ],
+          "env": {
+            "PRIVATEKEYPATH":"C:\\Users\\ylin\\.ssh\\id_rsa",
+            "SPINQCLOUDUSERNAME":"a492760446"
+          }
+        }
+      }
+    }
+    ```
 
 - vscode cline插件
   - 配置项：
@@ -119,34 +143,6 @@
     - ![alt text](image-2.png)
   - 结果
     - ![alt text](image-3.png)
-
-- cursor
-  - 配置项
-    ```
-    {
-      "mcpServers": {
-        "qasm-submitter": {
-          "type": "stdio",
-          "command": "cmd",
-          "args": [
-            "/C",
-            "C:\\Users\\ylin\\.conda\\envs\\mcp-server-py310\\python.exe",
-            "-m",
-            "spinqit_task_manager.qasm_submitter"
-          ],
-          "env": {
-            "PYTHONPATH":"/opt/anaconda3/envs/testmcpenv/bin/python",
-            "PRIVATEKEYPATH":"/Users/yucheng/.ssh/id_rsa",
-            "SPINQCLOUDUSERNAME":"a492760446"
-          }
-        }
-      }
-    }
-    ```
-  - 配置方式
-    - ![alt text](image-4.png)
-  - 结果
-    - ![alt text](image-5.png)
 
 
 

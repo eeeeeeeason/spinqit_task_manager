@@ -30,11 +30,13 @@ goto :main
     pip install --no-cache-dir --upgrade spinqit_task_manager
     echo *****安装完成！请记录以下内容，用于mcp-server配置*****
     :: 输出python环境路径
-    echo Python 环境路径: %CONDA_BASE%\envs\mcp-server-py310\python.exe
-    echo mcp-server的执行命令为：%CONDA_BASE%\envs\mcp-server-py310\python.exe -m spinqit_task_manager.qasm_submitter
-    echo "用户名与私钥信息请访问cloud.spinq.cn进行获取，并设置到mcp-server的配置文件中"
-    pause
-    exit /b 1
+    for /f "delims=" %%a in ('where python') do (
+        echo Python 环境路径: "%%a"
+        echo mcp-server的执行命令为："%%a" -m spinqit_task_manager.qasm_submitter
+        echo "用户名与私钥信息请访问cloud.spinq.cn进行获取，并设置到mcp-server的配置文件中"
+        pause
+        exit /b 1
+    )
     goto :eof
 
 
