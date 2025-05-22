@@ -1,5 +1,7 @@
 # spinqit-mcp-server 安装指南
 
+[![smithery badge](https://smithery.ai/badge/@eeeeeeeason/spinqit_task_manager)](https://smithery.ai/server/@eeeeeeeason/spinqit_task_manager)
+
 本项目提供适用于 **Windows** 和 **macOS** 的 `spinqit-mcp-server` 一键安装脚本。这些脚本会自动检查 Python 环境（需 3.10 或更高版本）并安装所需的 `spinqit_task_manager` 依赖包。如果系统中没有合适的 Python 环境，脚本会尝试使用 **Conda** 创建环境，或引导用户手动安装 Python。
 
 ## 目录
@@ -20,6 +22,14 @@
 - **macOS 终端权限**：确保终端支持 `bash`。
 
 ## 安装步骤
+
+### Installing via Smithery
+
+To install Spinqit Task Manager Server for Claude Desktop automatically via [Smithery](https://smithery.ai/server/@eeeeeeeason/spinqit_task_manager):
+
+```bash
+npx -y @smithery/cli install @eeeeeeeason/spinqit_task_manager --client claude
+```
 
 ### Windows
 
