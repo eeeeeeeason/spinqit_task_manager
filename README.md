@@ -62,6 +62,8 @@ Windows
     ◦ ![alt text](image-6.png)
 
     ◦ Note the execution command (e.g., `C:\ProgramData\Anaconda3\envs\mcp-server-py310\python.exe -m spinqit_task_manager.qasm_submitter` in this example) and register an account at [cloud.spinq.cn](https://cloud.spinq.cn) to configure your public key.
+    
+    ◦ input the execution command, PRIVATEKEYPATH , SPINQCLOUDUSERNAME to your mcp server setting
 
 
 macOS
@@ -138,11 +140,11 @@ Environment Testing (Create and submit a 2-qubit quantum circuit QASM to the clo
 
   • Configuration method
 
-    ◦ ![alt text](image-7.png)
+   ![alt text](image-7.png)
 
   • Results
 
-    ◦ ![alt text](image-5.png)
+   ![alt text](image-5.png)
 
   • Configuration settings
 
@@ -159,8 +161,8 @@ Environment Testing (Create and submit a 2-qubit quantum circuit QASM to the clo
             "spinqit_task_manager.qasm_submitter"
           ],
           "env": {
-            "PRIVATEKEYPATH":"C:\\Users\\ylin\\.ssh\\id_rsa",
-            "SPINQCLOUDUSERNAME":"a492760446"
+            "PRIVATEKEYPATH":"<Your Privatekey Path>",
+            "SPINQCLOUDUSERNAME":"<Your SpinQ Cloud Username>"
           }
         }
       }
@@ -186,8 +188,8 @@ Environment Testing (Create and submit a 2-qubit quantum circuit QASM to the clo
             "spinqit_task_manager.qasm_submitter"
           ],
           "env": {
-            "PRIVATEKEYPATH": "C:\\Users\\ylin\\.ssh\\id_rsa",
-            "SPINQCLOUDUSERNAME": "a492760446"
+            "PRIVATEKEYPATH": "<Your Privatekey Path>",
+            "SPINQCLOUDUSERNAME": "<Your SpinQ Cloud Username>"
           }
         }
       }
@@ -195,11 +197,11 @@ Environment Testing (Create and submit a 2-qubit quantum circuit QASM to the clo
     ```
   • Configuration method
 
-    ◦ ![alt text](image-2.png)
+   ![alt text](image-2.png)
 
   • Results
 
-    ◦ ![alt text](image-3.png)
+   ![alt text](image-3.png)
 
 
 Manual Installation Steps

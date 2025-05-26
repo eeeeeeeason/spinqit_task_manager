@@ -96,9 +96,9 @@
 ### 环境测试情况 （创建并提交一个2比特量子线路qasm到云平台，并查看结果）
 - cursor
   - 配置方式
-    - ![alt text](image-7.png)
+   ![alt text](image-7.png)
   - 结果
-    - ![alt text](image-5.png)
+   ![alt text](image-5.png)
   - 配置项
     ```
     {
@@ -146,9 +146,9 @@
     }
     ```
   - 配置方式
-    - ![alt text](image-2.png)
+   ![alt text](image-2.png)
   - 结果
-    - ![alt text](image-3.png)
+   ![alt text](image-3.png)
 
 ## 手动安装步骤
 - python3.10以上版本， pip install spinqit_task_manager
