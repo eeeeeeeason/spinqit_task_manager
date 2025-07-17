@@ -1,3 +1,5 @@
+[![MseeP.ai Security Assessment Badge](https://mseep.net/pr/eeeeeeeason-spinqit-task-manager-badge.png)](https://mseep.ai/app/eeeeeeeason-spinqit-task-manager)
+
 spinqit-mcp-server Installation Guide
 
 <div align="right">
